@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
+    <width>724</width>
     <height>440</height>
    </rect>
   </property>
@@ -15,18 +15,21 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="kcmdisclaimer">
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;These settings are provided by Manjaro and problems related to them should not be reported to KDE team!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Instead, please use &lt;a href=&quot;https://gitlab.manjaro.org/applications/manjaro-settings-manager/-/issues&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;Manjaro GitLab issue tracker&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="QListView" name="kernelListView">
      <property name="focusPolicy">
       <enum>Qt::NoFocus</enum>
      </property>
      <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="kcmdisclaimer">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;right&quot;&gt;Made by Manjaro. &lt;a href=&quot;https://gitlab.manjaro.org/applications/manjaro-settings-manager/-/issues&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;Report&lt;/span&gt;&lt;/a&gt; an issue.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="openExternalLinks">
       <bool>true</bool>
      </property>
     </widget>
