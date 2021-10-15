@@ -89,6 +89,9 @@ MhwdPage::MhwdPage( QWidget* parent ) :
     } );
     connect( ui->checkBoxShowAll, &QCheckBox::toggled,
              this, &MhwdPage::load );
+
+    //don't show the KCM disclaimer in separate app
+    ui->kcmdisclaimer->setVisible(false);
 }
 
 

@@ -55,6 +55,9 @@ KernelPage::KernelPage( QWidget* parent ) :
     {
         KernelCommon::showChangelog( index );
     } );
+
+    //don't show the KCM disclaimer in separate app
+    ui->kcmdisclaimer->setVisible(false);
 }
 
 KernelPage::~KernelPage()

@@ -47,6 +47,9 @@ LanguagePackagesPage::LanguagePackagesPage( QWidget* parent ) :
         LanguagePackagesCommon::installPackages( ui );
         load();
     } );
+
+    //don't show the KCM disclaimer in separate app
+    ui->kcmdisclaimer->setVisible(false);
 }
 
 
