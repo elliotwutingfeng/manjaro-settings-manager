@@ -32,21 +32,21 @@ set(USERS_RESOURCES
     users.qrc)
 QT5_ADD_RESOURCES (USERS_SRCS ${USERS_RESOURCES})
 
-# KCM Module
-set(USERS_KCM_SRCS
-    ${USERS_SRCS}
-    UsersModule.cpp)
+## KCM Module
+#set(USERS_KCM_SRCS
+#    ${USERS_SRCS}
+#    UsersModule.cpp)
 
-add_library(msm_users MODULE ${USERS_KCM_SRCS})
-target_compile_definitions(msm_users PRIVATE -DPROJECT_VERSION="${PROJECT_VERSION}")
-target_link_libraries(msm_users
-    msm
-    Qt5::Widgets
-    KF5::ConfigWidgets
-    KF5::CoreAddons)
+#add_library(msm_users MODULE ${USERS_KCM_SRCS})
+#target_compile_definitions(msm_users PRIVATE -DPROJECT_VERSION="${PROJECT_VERSION}")
+#target_link_libraries(msm_users
+#    msm
+#    Qt5::Widgets
+#    KF5::ConfigWidgets
+#    KF5::CoreAddons)
 
-install(TARGETS msm_users DESTINATION ${PLUGIN_INSTALL_DIR})
-install(FILES msm_users.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+#install(TARGETS msm_users DESTINATION ${PLUGIN_INSTALL_DIR})
+#install(FILES msm_users.desktop DESTINATION ${SERVICES_INSTALL_DIR})
 
 # MSM Page
 set(USERS_PAGE_SRCS

@@ -20,24 +20,24 @@ set(LOCALE_UI
     ui/SelectLocalesDialog.ui)
 qt5_wrap_ui(LOCALE_SRCS ${LOCALE_UI})
 
-# KCM Module
-set(LOCALE_KCM_SRCS
-    ${LOCALE_SRCS}
-    LocaleModule.cpp)
+## KCM Module
+#set(LOCALE_KCM_SRCS
+#    ${LOCALE_SRCS}
+#    LocaleModule.cpp)
 
-add_library(msm_locale MODULE ${LOCALE_KCM_SRCS})
-target_compile_definitions(msm_locale PRIVATE -DPROJECT_VERSION="${PROJECT_VERSION}")
-target_link_libraries(msm_locale    
-    Qt5::DBus
-    KF5::ConfigWidgets
-    KF5::CoreAddons
-    KF5::ItemModels
-    icudata
-    icuuc
-    msm)
+#add_library(msm_locale MODULE ${LOCALE_KCM_SRCS})
+#target_compile_definitions(msm_locale PRIVATE -DPROJECT_VERSION="${PROJECT_VERSION}")
+#target_link_libraries(msm_locale
+#    Qt5::DBus
+#    KF5::ConfigWidgets
+#    KF5::CoreAddons
+#    KF5::ItemModels
+#    icudata
+#    icuuc
+#    msm)
 
-install(TARGETS msm_locale DESTINATION ${PLUGIN_INSTALL_DIR})
-install(FILES msm_locale.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+#install(TARGETS msm_locale DESTINATION ${PLUGIN_INSTALL_DIR})
+#install(FILES msm_locale.desktop DESTINATION ${SERVICES_INSTALL_DIR})
 
 # MSM PAGE
 set(LOCALE_PAGE_SRCS
