@@ -96,15 +96,17 @@ KernelListViewDelegate::paint( QPainter* painter, const QStyleOptionViewItem& op
     buttonRect.moveTopRight( QPointF( option.rect.right() - padding,
                                       option.rect.center().y() - buttonHeight - 10 ) );
 
-    QStyleOptionButton button;
-    button.rect = buttonRect.toRect();
-    if ( isInstalled )
-        button.text = removeStr;
-    else
-        button.text = installStr;
-    button.state = m_stateInstallButton | QStyle::State_Enabled;
-    painter->setFont( buttonFont );
-    QApplication::style()->drawControl( QStyle::CE_PushButton, &button, painter );
+    if ( !isRunning )
+        QStyleOptionButton button;
+        button.rect = buttonRect.toRect();
+        if ( isInstalled )
+            button.text = removeStr;
+        else
+            button.text = installStr;
+        button.state = m_stateInstallButton | QStyle::State_Enabled;
+        painter->setFont( buttonFont );
+        QApplication::style()->drawControl( QStyle::CE_PushButton, &button, painter );
+    }
 
     // Draw changelog/information button
     buttonRect.moveTopRight( QPointF( option.rect.right() - padding,
@@ -298,6 +300,8 @@ KernelListViewDelegate::editorEvent( QEvent* event, QAbstractItemModel* model,
     infoButtonRect.moveTopRight( QPointF( option.rect.right() - padding,
                                           option.rect.center().y() + 2 ) );
 
+    bool isRunning = qvariant_cast<bool>( index.data( KernelModel::IsRunningRole ) );
+
     // Raise or sunk buttons, and emit signals
     QMouseEvent* mouseEvent = static_cast<QMouseEvent*>( event );
     if ( !installButtonRect.contains( mouseEvent->pos() ) &&
@@ -309,7 +313,7 @@ KernelListViewDelegate::editorEvent( QEvent* event, QAbstractItemModel* model,
     }
     if ( event->type() == QEvent::MouseButtonPress )
     {
-        if ( installButtonRect.contains( mouseEvent->pos() ) )
+        if ( !isRunning && installButtonRect.contains( mouseEvent->pos() ) )
             m_stateInstallButton = QStyle::State_Sunken;
         if ( infoButtonRect.contains( mouseEvent->pos() ) )
             m_stateInfoButton = QStyle::State_Sunken;
@@ -318,7 +322,7 @@ KernelListViewDelegate::editorEvent( QEvent* event, QAbstractItemModel* model,
     {
         m_stateInstallButton = QStyle::State_Raised;
         m_stateInfoButton = QStyle::State_Raised;
-        if ( installButtonRect.contains( mouseEvent->pos() ) )
+        if ( !isRunning && installButtonRect.contains( mouseEvent->pos() ) )
             emit installButtonClicked( index );
         if ( infoButtonRect.contains( mouseEvent->pos() ) )
         {
