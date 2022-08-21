@@ -96,7 +96,7 @@ KernelListViewDelegate::paint( QPainter* painter, const QStyleOptionViewItem& op
     buttonRect.moveTopRight( QPointF( option.rect.right() - padding,
                                       option.rect.center().y() - buttonHeight - 10 ) );
 
-    if ( !isRunning )
+    if ( !isRunning ) {
         QStyleOptionButton button;
         button.rect = buttonRect.toRect();
         if ( isInstalled )
